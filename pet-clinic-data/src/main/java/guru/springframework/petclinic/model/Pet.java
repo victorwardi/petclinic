@@ -2,7 +2,9 @@ package guru.springframework.petclinic.model;
 
 import java.time.LocalDate;
 
-public class Pet {
+public class Pet extends BaseEntity{
+
+    private Long id;
 
     private LocalDate birthDate;
 
@@ -12,6 +14,14 @@ public class Pet {
 
     public LocalDate getBirthDate() {
         return birthDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setBirthDate(LocalDate birthDate) {
