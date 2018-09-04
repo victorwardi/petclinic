@@ -4,7 +4,9 @@ import guru.springframework.petclinic.model.Owner;
 import guru.springframework.petclinic.service.OwnerService;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by Victor Wardi - @vwardi - on 22/08/2018.
@@ -14,7 +16,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Set<Owner> findAll() {
-        return super.findAll();
+        return super.findAll().stream().sorted(Comparator.comparing(Owner::getId)).collect(Collectors.toSet());
     }
 
     @Override
@@ -29,7 +31,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner save(Owner object) {
-        return super.save(object.getId(), object);
+        return super.save(object);
     }
 
     @Override
