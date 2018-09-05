@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 <head>
     <meta charset="UTF-8">
     <title>Pet Clinic App</title>
 </head>
 <body>
-<h1 th:text="'Pet Clinic Home'">Home Page</h1>
+<h1 th:text="#{welcome}">Home Page</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <img class="img-responsive" src="../static/images/pets.png" th:src="@{/images/pets.png}"/>
+    </div>
+</div>
 </body>
 </html>
