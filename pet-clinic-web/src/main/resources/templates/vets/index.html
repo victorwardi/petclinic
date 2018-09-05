@@ -6,21 +6,24 @@
 </head>
 <body>
 
-<h1 th:text="'Veterinarians'">List of vets</h1>
+<h2 th:text="'Veterinarians'">List of vets</h2>
 
 <table id="vets" class="table table-striped">
     <thead>
     <tr>
-        <th>Id</th>
-        <th>First Name</th>
-        <th>Last Name</th>
+
+        <th>Name</th>
+        <th>Specialities</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="vet : ${vets}">
-        <td th:text="${vet.id}">1</td>
-        <td th:text="${vet.firstName}">FirstName</td>
-        <td th:text="${vet.lastName}">LastName</td>
+        <td th:text="${vet.firstName + ' ' + vet.lastName}">FirstName</td>
+       <td>
+           <span th:each="speciality,index : ${vet.getSpecialities()}"
+                 th:text="${!index.last} ? ${speciality + ', '} : ${speciality}"></span>
+            <span th:if="${vet.getSpecialities() == null}">none</span>
+        </td>
     </tr>
     </tbody>
 </table>
