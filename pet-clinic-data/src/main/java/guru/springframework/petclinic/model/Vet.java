@@ -1,14 +1,16 @@
 package guru.springframework.petclinic.model;
 
+import java.util.Set;
+
 public class Vet extends Person{
 
-    private String[] specialities;
+    private Set<Specialty> specialities;
 
-    public String[] getSpecialities() {
+    public Set<Specialty> getSpecialities() {
         return specialities;
     }
 
-    public void setSpecialities(String[] specialities) {
+    public void setSpecialities(Set<Specialty> specialities) {
         this.specialities = specialities;
     }
 }
