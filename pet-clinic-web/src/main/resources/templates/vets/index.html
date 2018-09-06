@@ -21,8 +21,8 @@
         <td th:text="${vet.firstName + ' ' + vet.lastName}">FirstName</td>
        <td>
            <span th:each="speciality,index : ${vet.getSpecialities()}"
-                 th:text="${!index.last} ? ${speciality + ', '} : ${speciality}"></span>
-            <span th:if="${vet.getSpecialities() == null}">none</span>
+                 th:text="${!index.last} ? ${speciality.description + ', '} : ${speciality.description}"></span>
+            <span th:if="${vet.getSpecialities().size() == 0}">none</span>
         </td>
     </tr>
     </tbody>

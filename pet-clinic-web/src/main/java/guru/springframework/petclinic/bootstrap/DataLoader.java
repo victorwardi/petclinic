@@ -1,16 +1,16 @@
 package guru.springframework.petclinic.bootstrap;
 
-import guru.springframework.petclinic.model.Owner;
-import guru.springframework.petclinic.model.Pet;
-import guru.springframework.petclinic.model.PetType;
-import guru.springframework.petclinic.model.Vet;
+import guru.springframework.petclinic.model.*;
 import guru.springframework.petclinic.service.OwnerService;
 import guru.springframework.petclinic.service.PetTypeService;
+import guru.springframework.petclinic.service.SpecialtyService;
 import guru.springframework.petclinic.service.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Victor Wardi - @vwardi - on 29/08/2018.
@@ -24,15 +24,19 @@ public class DataLoader implements CommandLineRunner {
 
     private final PetTypeService petTypeService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+    private final SpecialtyService specialtyService;
+
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
+        this.specialtyService = specialtyService;
     }
 
     @Override
     public void run(String... args) throws Exception {
 
+        //Adding pet tyoes
         PetType cat = new PetType();
         cat.setName("Cat");
         PetType savedCatPetType = petTypeService.save(cat);
@@ -45,6 +49,7 @@ public class DataLoader implements CommandLineRunner {
         cat.setName("Bird");
         PetType savedBirdPetType = petTypeService.save(bird);
 
+        //Adding owners and pets
         Owner owner1 = new Owner();
         owner1.setFirstName("Victor");
         owner1.setLastName("Wardi");
@@ -88,18 +93,43 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Loaded Owners...");
 
+        //Adding Vets and Specialties
+
         Vet vet1 = new Vet();
         vet1.setFirstName("Georhhia");
         vet1.setLastName("Preuss");
 
-        //vet1.setSpecialities();
+        Specialty radiology = new Specialty();
+        radiology.setDescription("Radiology");
+        Specialty savedRadiology = specialtyService.save(radiology);
+
+        Specialty dentistry = new Specialty();
+        dentistry.setDescription("Dentistry");
+        Specialty savedDentistry = specialtyService.save(dentistry);
+
+        Specialty nutrition = new Specialty();
+        nutrition.setDescription("Nutrition");
+
+        Specialty savedNutrition = specialtyService.save(nutrition);
+
+        Set<Specialty> vet1Specialties = new HashSet<>();
+        vet1Specialties.add(savedNutrition);
+        vet1Specialties.add(savedDentistry);
+
+        vet1.setSpecialities(vet1Specialties);
 
         this.vetService.save(vet1);
 
         Vet vet2 = new Vet();
         vet2.setFirstName("Leda");
         vet2.setLastName("Paes");
-       // vet2.setSpecialities();
+
+        Set<Specialty> vet2Specialties = new HashSet<>();
+        vet2Specialties.add(savedRadiology);
+        vet2Specialties.add(savedNutrition);
+        vet2Specialties.add(savedDentistry);
+
+        vet2.setSpecialities(vet2Specialties);
 
         this.vetService.save(vet2);
 

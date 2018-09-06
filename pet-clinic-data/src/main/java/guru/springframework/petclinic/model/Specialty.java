@@ -3,7 +3,7 @@ package guru.springframework.petclinic.model;
 /**
  * Created by Victor Wardi - @vwardi - on 06/09/2018.
  */
-public class Specialty {
+public class Specialty extends BaseEntity {
 
     private String description;
 
