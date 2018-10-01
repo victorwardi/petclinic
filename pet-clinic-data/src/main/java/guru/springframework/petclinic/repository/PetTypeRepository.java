@@ -1,12 +1,12 @@
 package guru.springframework.petclinic.repository;
 
-import guru.springframework.petclinic.model.Owner;
+import guru.springframework.petclinic.model.PetType;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  * Created by Victor Wardi - @vwardi - on 25/09/2018.
  */
-public interface OwnerRepository extends CrudRepository<Owner, Long> {
+public interface PetTypeRepository extends CrudRepository<PetType, Long> {
 
-    Owner findByFirstName(String lastName);
+    PetType findByFirstName(String name);
 }

@@ -7,4 +7,6 @@ import org.springframework.data.repository.CrudRepository;
  * Created by Victor Wardi - @vwardi - on 25/09/2018.
  */
 public interface VetRepository extends CrudRepository<Vet, Long> {
+
+    public Vet findByFirstName(String name);
 }

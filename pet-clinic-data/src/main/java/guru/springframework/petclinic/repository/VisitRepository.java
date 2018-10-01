@@ -7,4 +7,6 @@ import org.springframework.data.repository.CrudRepository;
  * Created by Victor Wardi - @vwardi - on 25/09/2018.
  */
 public interface VisitRepository extends CrudRepository<Visit, Long> {
+
+    Visit findByDescription(String description);
 }
