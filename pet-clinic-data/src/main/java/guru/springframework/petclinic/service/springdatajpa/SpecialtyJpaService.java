@@ -13,7 +13,7 @@ import java.util.Set;
  * Created by Victor Wardi - @vwardi - on 28/09/2018.
  */
 @Service
-@Profile("springadatajpa")
+@Profile("springdatajpa")
 public class SpecialtyJpaService implements SpecialtyService {
 
     private final SpecialtyRepository specialtyRepository;
@@ -31,7 +31,7 @@ public class SpecialtyJpaService implements SpecialtyService {
 
     @Override
     public Specialty findByName(String name) {
-      return  specialtyRepository.findByFirstName(name);
+      return  specialtyRepository.findByDescription(name);
     }
 
     @Override

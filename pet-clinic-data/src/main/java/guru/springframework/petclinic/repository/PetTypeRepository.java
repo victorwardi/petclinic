@@ -8,5 +8,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface PetTypeRepository extends CrudRepository<PetType, Long> {
 
-    PetType findByFirstName(String name);
+    PetType findByName(String name);
 }

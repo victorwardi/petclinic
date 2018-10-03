@@ -3,6 +3,8 @@ package guru.springframework.petclinic.service.springdatajpa;
 import guru.springframework.petclinic.model.Pet;
 import guru.springframework.petclinic.repository.PetRepository;
 import guru.springframework.petclinic.service.PetService;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,6 +12,8 @@ import java.util.Set;
 /**
  * Created by Victor Wardi - @vwardi - on 27/09/2018.
  */
+@Service
+@Profile("springdatajpa")
 public class PetJpaService implements PetService {
 
     private final PetRepository petRepository;
@@ -27,7 +31,7 @@ public class PetJpaService implements PetService {
 
     @Override
     public Pet findByName(String name) {
-        return petRepository.findByFirstName(name);
+        return petRepository.findByName(name);
     }
 
     @Override
