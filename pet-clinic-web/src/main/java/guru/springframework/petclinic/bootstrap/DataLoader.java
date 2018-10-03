@@ -75,9 +75,8 @@ public class DataLoader implements CommandLineRunner {
 
         this.ownerService.save(owner1);
 
-        Owner owner2 = new Owner();
-        owner2.setFirstName("Ursula");
-        owner2.setLastName("Viviani");
+
+        Owner owner2 =  Owner.ownerBuilder().firstName("Ursula").lastName("Viviani").build();
         this.ownerService.save(owner2);
 
         Pet owner2Pet = new Pet();
